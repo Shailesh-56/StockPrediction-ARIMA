@@ -60,6 +60,8 @@ LSTM: Long Short-Term Memory neural network.
 Evaluation:
 -----------
 Evaluate models using metrics like RMSE, MSE, and MAE.
+![image](https://github.com/user-attachments/assets/7b1738cd-3862-4a82-976a-5e4fb8dae1b3)
+
 
 Forecasting:
 -------------
