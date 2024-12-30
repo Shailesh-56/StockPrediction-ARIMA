@@ -6,34 +6,50 @@ This project focuses on predicting stock prices using time series analysis techn
 **Objectives**
 ==============
 Analyze and visualize historical stock price data.
+
 Build predictive models using techniques like ARIMA and LSTM.
+
 Evaluate the accuracy of the models and optimize them for better performance.
 
 **Features**
 ============
 Time series decomposition and visualization.
+
 Building predictive models using ARIMA and LSTM.
+
 Performance evaluation of models using metrics like RMSE.
+
 Forecasting future stock prices.
 
 **Dataset**
 ===========
 Source: (https://finance.yahoo.com)
+
 Description: The dataset contains historical stock prices, including Open, High, Low, Close, and Volume.
+
 Data Access: The data was retrieved using the **yfinance** library, which allows programmatic access to Yahoo Finance for downloading stock price data efficiently.
 
 **Tools and Technologies**
 ===========================
 Programming Language: Python
+
 Libraries and Frameworks:
+
 Data Manipulation:numpy,pandas
+
 Visualization:matplotlib,seaborn,mplfinance
+
 Time Series Analysis:statsmodels (ARIMA, SARIMAX, seasonal decomposition),pmdarima (auto ARIMA),prophet (Time series forecasting)
 statsmodels.tsa.holtwinters (Exponential Smoothing)
+
 Deep Learning:tensorflow.keras (Sequential, LSTM, GRU, Dense, Dropout)
+
 Preprocessing:MinMaxScaler
-Evaluation Metrics:mean_squared_error
+
+Evaluation Metrics:root_mean_squared_error
+
 Model Diagnostics:plot_acf, plot_pacf
+
 Other Tools: Jupyter Notebook or Spyder for Deployement
 
 **Methodology**
@@ -44,22 +60,41 @@ Historical stock price data is sourced from [https://finance.yahoo.com].
 
 Exploratory Data Analysis (EDA):
 --------------------------------
-Visualization of trends, seasonality, and noise.
-Time series decomposition.
+Data Loading and Overview
+Load the dataset and display basic information such as rows, columns, and data types.
 
-Preprocessing:
---------------
-Handling missing values.
-Normalization/Scaling of data.
+Handling Missing Data
+Check for missing values and describe how they were handled (e.g., dropped, imputed).
+
+Data Cleaning
+Address any duplicate rows or outliers.
+
+Univariate Analysis
+Analyze individual features using statistical summaries and visualizations (e.g., histograms, box plots).
+
+Bivariate Analysis
+Explore relationships between pairs of features using plots (e.g., scatter plots, correlation matrices).
+
+Multivariate Analysis
+Investigate interactions between multiple features using advanced visualizations like heatmaps or pair plots.
+
+Feature Engineering
+Create new features or transform existing ones to improve model performance.
+
+Data Transformation and Scaling
+Apply necessary transformations (e.g., normalization, standardization) for better model accuracy.
+
 
 Model Building:
 ---------------
 ARIMA: Autoregressive Integrated Moving Average model.
+
 LSTM: Long Short-Term Memory neural network.
 
 Evaluation:
 -----------
 Evaluate models using metrics like RMSE, MSE, and MAE.
+
 ![image](https://github.com/user-attachments/assets/7b1738cd-3862-4a82-976a-5e4fb8dae1b3)
 
 
@@ -74,10 +109,15 @@ This project includes a Streamlit app that provides an interactive interface for
 Features:
 ---------
 Input stock details: Starting date, ending date, and the company ticker.
+
 Fetch and display historical stock price data dynamically.
+
 Visualize stock price trends with interactive charts.
+
 Perform time series analysis using ARIMA, SARIMA, LSTM, and other models.
+
 Display predictions and compare model performance (based on RMSE values).
+
 Forecast future stock prices for the selected company.
 
 Input Parameters:
