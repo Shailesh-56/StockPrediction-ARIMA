@@ -83,7 +83,9 @@ Forecast future stock prices for the selected company.
 Input Parameters:
 -----------------
 Starting Date: The date from which historical stock data should be retrieved.
+
 Ending Date: The date until which historical stock data should be retrieved.
+
 Company Ticker: The stock ticker symbol of the company (e.g., AAPL for Apple, GOOG for Google).
 
 **Results**
