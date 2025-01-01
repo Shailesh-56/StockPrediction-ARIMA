@@ -1,5 +1,6 @@
 # StockPrediction-ARIMA
 https://bit.ly/stock-prediction-arima
+
 **Overview**
 =============
 This project focuses on predicting stock prices using time series analysis techniques. The aim is to provide insights into stock market trends and assist in decision-making by leveraging historical stock price data.
