@@ -45,7 +45,19 @@ menu_model = st.sidebar.selectbox("Select Model", ["ARIMA", 'SARIMA', 'ETS', 'GR
 if company_name:
     try:
         # Download stock data
-        stock_data = yf.download(company_name, start=start_date, end=end_date)
+        stock_data = yf.download(
+    company_name.strip().upper(),
+    start=start_date,
+    end=end_date,
+    auto_adjust=False,
+    progress=False
+)
+
+if stock_data.empty:
+    st.error(
+        "Yahoo Finance returned no data. "
+        "Check the ticker symbol and selected dates."
+    )
 
         if menu_option == "Show Data":
             # Display the first 10 records
@@ -121,6 +133,37 @@ else:
     st.write("Please enter a valid company ticker to fetch data.")
 
 if menu_model == "ARIMA" and company_name:
+    # Validate stock data
+    if "stock_data" not in locals() or stock_data.empty:
+        st.error("No stock data available. Check the ticker and date range.")
+
+    else:
+        # Keep only valid closing prices
+        close_prices = pd.to_numeric(
+            stock_data["Close"], errors="coerce"
+        ).replace([np.inf, -np.inf], np.nan).dropna()
+
+        if len(close_prices) < 20:
+            st.warning(
+                "Insufficient valid closing-price data for ARIMA. "
+                "Choose a longer date range."
+            )
+
+        elif close_prices.nunique() <= 1:
+            st.warning(
+                "Closing prices are constant. The ADF test and "
+                "ARIMA forecasting cannot proceed with this data."
+            )
+
+        else:
+            # Use validated closing prices
+            stock_data = close_prices.to_frame(name="Close")
+
+            # Stationarity Check
+            adf = adfuller(close_prices)
+            st.write(
+                f"ADF Test P-Value (Original Series): {adf[1]:.6f}"
+            )
     stock_data = stock_data[['Close']].dropna()
     
     # Stationarity Check
